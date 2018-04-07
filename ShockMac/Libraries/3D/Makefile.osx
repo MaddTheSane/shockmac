@@ -1,0 +1,50 @@
+
+
+ARCHFLAGS := -m32
+
+SRCS = Source/ALLOC.c \
+Source/Bitmap.c \
+Source/CLIP.c \
+Source/DETAIL.c \
+Source/FOV.c \
+Source/GlobalV.c \
+Source/INSTANCE.c \
+Source/INTERP.c \
+Source/LIGHT.c \
+Source/MATRIX.c \
+Source/POINTS.c \
+Source/POLYGON.c \
+Source/SLEW.c \
+Source/TMAP.c \
+Source/VECTOR.c \
+
+
+CFLAGS+=-ISource -I../H -I../LG/Source -I../FIX/Source -I../2D/Source 
+
+#OBJS = $(SRCS:.c=.o)
+
+# change these to proper directories where each file should be
+SRCDIR   = Source
+OBJDIR   = obj
+BINDIR   = bin
+
+# SRCS  := $(wildcard $(SRCDIR)/*.c)
+INCLUDES := $(wildcard $(SRCDIR)/*.h)
+OBJS  := $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+rm       = rm -f
+
+
+$(OBJS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
+	@$(CC) $(CFLAGS) $(ARCHFLAGS) -c $< -o $@
+	@echo "Compiled "$<" successfully!"
+
+.PHONY: clean
+clean:
+	@$(rm) $(OBJECTS)
+	@echo "Cleanup complete!"
+
+lib3D.dylib: $(OBJS)
+	$(CC) -dynamiclib $(ARCHFLAGS) -framework CoreServices -o $@ $^ 
+
+lib3D.a: $(OBJS)
+	$(AR) -rcs $@ $^ 

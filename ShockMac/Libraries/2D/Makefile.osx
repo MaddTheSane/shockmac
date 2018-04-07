@@ -1,0 +1,189 @@
+
+
+ARCHFLAGS := -m32
+
+SRCS = Source/BIT.c \
+Source/BITMAP.c \
+Source/BLEND.c \
+Source/BUFFER.c \
+Source/CANVAS.c \
+Source/CHAIN.c \
+Source/CHRSIZ.c \
+Source/CHRWID.c \
+Source/CLOSE.c \
+Source/CNVTAB.c \
+Source/CONTEXT.c \
+Source/DETECT.c \
+Source/FCNTAB.c \
+Source/INIT.c \
+Source/INVTAB.c \
+Source/LINTAB.c \
+Source/MODE.c \
+Source/PAL.c \
+Source/PERMAP.c \
+Source/PERSETUP.c \
+Source/PERTOL.c \
+Source/PIXFILL.c \
+Source/RGB.c \
+Source/SCREEN.c \
+Source/SSCRN.c \
+Source/STRNSIZ.c \
+Source/STRSCL.c \
+Source/STRSIZ.c \
+Source/STRUSCL.c \
+Source/STRWID.c \
+Source/STRWRAP.c \
+Source/SVGAINIT.c \
+Source/TEMPBM.c \
+Source/TEMPTM.c \
+Source/TLUCDAT.c \
+Source/TLUCTAB.c \
+Source/VALLOC.c \
+Source/VTAB.c \
+Source/WIRPOLY.c \
+Source/Clip/CLPCLIN.c \
+Source/Clip/CLPF24.c \
+Source/Clip/CLPLIN.c \
+Source/Clip/CLPLIN2.c \
+Source/Clip/CLPLTAB.c \
+Source/Clip/CLPMONO.c \
+Source/Clip/CLPPLY.c \
+Source/Clip/CLPPOLY.c \
+Source/Clip/CLPRECT.c \
+Source/Clip/CLPSLIN.c \
+Source/GR/GRD.c \
+Source/GR/GRILIN.c \
+Source/GR/GRMALLOC.c \
+Source/GR/GRNULL.c \
+Source/GR/GRUILIN.c \
+Source/Gen/GENBOX.c \
+Source/Gen/GENCHFL8.c \
+Source/Gen/GENCHR.c \
+Source/Gen/GENCIRC.c \
+Source/Gen/GENCLIN.c \
+Source/Gen/GENCNV.c \
+Source/Gen/GENCWLIN.c \
+Source/Gen/GENDISK.c \
+Source/Gen/GENEL.c \
+Source/Gen/GENERAL.c \
+Source/Gen/GENF24.c \
+Source/Gen/GENFL8.c \
+Source/Gen/GENFL8C.c \
+Source/Gen/GENGFL8.c \
+Source/Gen/GENHFL8.c \
+Source/Gen/GENHLIN.c \
+Source/Gen/GENLIN.c \
+Source/Gen/GENMONO.c \
+Source/Gen/GENOV.c \
+Source/Gen/GENPIX.c \
+Source/Gen/GENRECT.c \
+Source/Gen/GENRSD8.c \
+Source/Gen/GENRSDBM.c \
+Source/Gen/GENRSDTM.c \
+Source/Gen/GENSLIN.c \
+Source/Gen/GENSTR.c \
+Source/Gen/GENTE.c \
+Source/Gen/GENTL8.c \
+Source/Gen/GENTM.c \
+Source/Gen/GENUCHR.c \
+Source/Gen/GENUCLIN.c \
+Source/Gen/GENUHLIN.c \
+Source/Gen/GENULIN.c \
+Source/Gen/GENUSLIN.c \
+Source/Gen/GENUSTR.c \
+Source/Gen/GENUVLIN.c \
+Source/Gen/GENVCPLY.c \
+Source/Gen/GENVLIN.c \
+Source/Gen/GENVPOLY.c \
+Source/Gen/GENVRECT.c \
+Source/Gen/GENWCLIN.c \
+Source/Gen/GENWLIN.c \
+
+SRCS2 = Source/Flat\ 8/FL8BL.c \
+Source/Flat\ 8/FL8BLDBL.c \
+Source/Flat\ 8/FL8CHFL8.c \
+Source/Flat\ 8/FL8CLEAR.c \
+Source/Flat\ 8/FL8CLIN.c \
+Source/Flat\ 8/FL8CNV.c \
+Source/Flat\ 8/FL8COP.c \
+Source/Flat\ 8/FL8CPLY.c \
+Source/Flat\ 8/FL8CTP.c \
+Source/Flat\ 8/FL8DBL.c \
+Source/Flat\ 8/FL8FL8.c \
+Source/Flat\ 8/FL8FL8C.c \
+Source/Flat\ 8/FL8FL8M.c \
+Source/Flat\ 8/FL8FLTR2.c \
+Source/Flat\ 8/FL8FT.c \
+Source/Flat\ 8/FL8G24.c \
+Source/Flat\ 8/FL8GFL8.c \
+Source/Flat\ 8/FL8GPIX.c \
+Source/Flat\ 8/FL8HFL8.c \
+Source/Flat\ 8/FL8HLIN.c \
+Source/Flat\ 8/FL8LF.c \
+Source/Flat\ 8/FL8LIN.c \
+Source/Flat\ 8/FL8LL.c \
+Source/Flat\ 8/FL8LNOP.c \
+Source/Flat\ 8/FL8LOP.c \
+Source/Flat\ 8/FL8LP.c \
+Source/Flat\ 8/FL8LTP.c \
+Source/Flat\ 8/FL8LW.c \
+Source/Flat\ 8/FL8MONO.c \
+Source/Flat\ 8/FL8MSCL.c \
+Source/Flat\ 8/FL8NL.c \
+Source/Flat\ 8/FL8NS.c \
+Source/Flat\ 8/FL8NTRP2.c \
+Source/Flat\ 8/FL8P.c \
+Source/Flat\ 8/FL8P24.c \
+Source/Flat\ 8/FL8PIX.c \
+Source/Flat\ 8/FL8PLY.c \
+Source/Flat\ 8/FL8PNT.c \
+Source/Flat\ 8/FL8RECT.c \
+Source/Flat\ 8/FL8ROW.c \
+Source/Flat\ 8/FL8RSD8.c \
+Source/Flat\ 8/FL8S.c \
+Source/Flat\ 8/FL8SLIN.c \
+Source/Flat\ 8/FL8SPLY.c \
+Source/Flat\ 8/FL8SUB.c \
+Source/Flat\ 8/FL8TL8.c \
+Source/Flat\ 8/FL8TPL.c \
+Source/Flat\ 8/FL8TSMAP.c \
+Source/Flat\ 8/FL8VLIN.c \
+Source/Flat\ 8/FL8W.c \
+Source/Flat\ 8/FL8WCLIN.c \
+Source/Flat\ 8/FL8WLIN.c \
+Source/Flat\ 8/Fl8F.c \
+
+
+
+.all: lib2D.a
+
+CFLAGS+=-ISource -I../H -I../LG/Source -ISource/GR -I../FIX/Source -ISource/Clip \
+-ISource/"Flat 8" -ISource/Gen  -ISource/RSD -Wno-nonportable-include-path
+
+#OBJS = $(SRCS:.c=.o)
+
+# change these to proper directories where each file should be
+SRCDIR   = Source
+OBJDIR   = obj
+BINDIR   = bin
+
+# SRCS  := $(wildcard $(SRCDIR)/*.c)
+INCLUDES := $(wildcard $(SRCDIR)/*.h)
+OBJS  := $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+rm       = rm -f
+
+
+$(OBJS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
+	@$(CC) $(CFLAGS) $(ARCHFLAGS) -c $< -o $@
+	@echo "Compiled "$<" successfully!"
+
+.PHONY: clean
+clean:
+	@$(rm) $(OBJECTS)
+	@echo "Cleanup complete!"
+
+lib2D.dylib: $(OBJS)
+	$(CC) -dynamiclib $(ARCHFLAGS) -framework CoreServices -o $@ $^ 
+
+lib2D.a: $(OBJS)
+	$(AR) -rcs $@ $^ 
