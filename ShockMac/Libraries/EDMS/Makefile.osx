@@ -1,0 +1,64 @@
+
+
+ARCHFLAGS := -m32
+
+SRCS = Source/COLLIDE.CC \
+Source/GLOBALS.CC \
+Source/INTERFAC.CC \
+Source/INTRSECT.CC \
+Source/MODELS/B.CC \
+Source/MODELS/BB.CC \
+Source/MODELS/BIPED.CC \
+Source/MODELS/BIPFACE.CC \
+Source/MODELS/BIP_SKEL.CC \
+Source/MODELS/CR_BIPED.CC \
+Source/MODELS/DEATH.CC \
+Source/MODELS/D_FRAME.CC \
+Source/MODELS/D_F_2.CC \
+Source/MODELS/D_F_FACE.CC \
+Source/MODELS/FF_FACE.CC \
+Source/MODELS/FF_FTL.CC \
+Source/MODELS/FODEATH.CC \
+Source/MODELS/FTL.CC \
+Source/MODELS/FTLFACE.CC \
+Source/MODELS/MARBFACE.CC \
+Source/MODELS/MARBLE.CC \
+Source/MODELS/OLD_FTL.CC \
+Source/MODELS/PELFACE.CC \
+Source/MODELS/PELGUD.CC \
+Source/MODELS/PELVIS.CC \
+Source/MODELS/ROBOT.CC \
+Source/PHY_TOOL.CC \
+Source/SOLITON.CC \
+Source/TERRAIN.CC
+
+
+CFLAGS+=-ISource -I../H -I../FIXPP/Source -I../FIX/Source -I../LG/Source
+
+#OBJS = $(SRCS:.C=.o)
+
+# change these to proper directories where each file should be
+SRCDIR   = Source
+OBJDIR   = obj
+BINDIR   = bin
+
+# SRCS  := $(wildcard $(SRCDIR)/*.c)
+INCLUDES := $(wildcard $(SRCDIR)/*.h)
+OBJS  := $(SRCS:$(SRCDIR)/%.CC=$(OBJDIR)/%.o)
+rm       = rm -f
+
+
+$(OBJS): $(OBJDIR)/%.o : $(SRCDIR)/%.CC
+	@$(CXX) $(CFLAGS) $(ARCHFLAGS) -c $< -o $@
+	@echo "Compiled "$<" successfully!"
+
+.PHONY: clean
+clean:
+	@$(rm) $(OBJECTS)
+	@echo "Cleanup complete!"
+
+libEDMS.dylib: $(OBJS)
+	$(CXX) -dynamiclib $(ARCHFLAGS) -framework CoreServices -o $@ $^ 
+
+libEDMS.a: $(OBJS)
+	$(AR) -rcs $@ $^ 
