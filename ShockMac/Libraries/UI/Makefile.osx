@@ -1,0 +1,64 @@
+
+
+ARCHFLAGS := -m32
+
+SRCS = Source/BUTARRAY.c \
+Source/CURDRW.c \
+Source/CURSORS.c \
+Source/EVENT.c \
+Source/GADGETS.c \
+Source/HOTKEY.c \
+Source/MENU.c \
+Source/MONOFONT.c \
+Source/PLAIN.c \
+Source/PUSHBUTT.c \
+Source/QBOXGADG.c \
+Source/REALFONT.c \
+Source/REGION.c \
+Source/SLAB.c \
+Source/SLIDER.c \
+Source/TEXTGADG.c \
+Source/TEXTTOOL.c \
+Source/TNG.c \
+Source/TNGBARRY.c \
+Source/TNGFONT.c \
+Source/TNGMENU.c \
+Source/TNGPLAIN.c \
+Source/TNGPUSHB.c \
+Source/TNGQBOX.c \
+Source/TNGSLIDR.c \
+Source/TNGTEXTG.c \
+Source/UIRES.c \
+Source/VMOUSE.c
+
+
+CFLAGS+=-ISource -I../H -I../LG/Source -I../FIX/Source -I../DSTRUCT/Source \
+-I../2D/Source -I../INPUT/Source -I../RES/Source -fpascal-strings
+
+#OBJS = $(SRCS:.c=.o)
+
+# change these to proper directories where each file should be
+SRCDIR   = Source
+OBJDIR   = obj
+BINDIR   = bin
+
+# SRCS  := $(wildcard $(SRCDIR)/*.c)
+INCLUDES := $(wildcard $(SRCDIR)/*.h)
+OBJS  := $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+rm       = rm -f
+
+
+$(OBJS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
+	@$(CC) $(CFLAGS) $(ARCHFLAGS) -c $< -o $@
+	@echo "Compiled "$<" successfully!"
+
+.PHONY: clean
+clean:
+	@$(rm) $(OBJECTS)
+	@echo "Cleanup complete!"
+
+libUI.dylib: $(OBJS)
+	$(CC) -dynamiclib $(ARCHFLAGS) -framework CoreServices -o $@ $^ 
+
+libUI.a: $(OBJS)
+	$(AR) -rcs $@ $^ 
