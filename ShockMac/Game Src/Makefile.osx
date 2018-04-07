@@ -30,7 +30,6 @@ FIXTRMFD.c \
 FRCAMERA.c \
 FRCLIP.c \
 FRCOMPIL.c \
-FRMAIN.c \
 FROBJ.c \
 FROSLEW.c \
 FRPIPE.c \
@@ -41,7 +40,6 @@ FRTERR.c \
 FRUTIL.c \
 FULLAMAP.c \
 FULLSCRN.c \
-FrUtils.c \
 GAMELOOP.c \
 GAMEOBJ.c \
 GAMEREND.c \
@@ -55,11 +53,9 @@ GR2SS.c \
 GRENADES.c \
 HAND.c \
 HFLIP.c \
-HKEYFUNC.c \
 HUD.c \
 HUDOBJ.c \
 INIT.c \
-INPUT.c \
 INVENT.c \
 LEANMETR.c \
 MAINLOOP.c \
@@ -115,11 +111,19 @@ WARES.c \
 WEAPONS.c \
 WRAPPER.c \
 
+# the following needs porting because Carbon obfuscated some structs. 
+# HKEYFUNC.c \
+# INPUT.c \
+
+CXXSRCS= FRMAIN.C \
+ FrUtils.C \
+
 
 CFLAGS+=-IHeaders -I../Libraries/H -I../Libraries/LG/Source -I../Libraries/FIX/Source -I../Libraries/DSTRUCT/Source \
 -I../Libraries/2D/Source -I../Libraries/3D/Source -I../Libraries/INPUT/Source -I../Libraries/RES/Source -fpascal-strings \
 -I../Libraries/EDMS/Source -I../Libraries/PALETTE/Source -I../Libraries/RND/Source \
--I../Libraries/SND/Source -F$(HOME)/oldQTFrameworks -I../Libraries/UI/Source -I../Libraries/VOX/Source -I../"Mac Src"
+-I../Libraries/SND/Source -F$(HOME)/oldQTFrameworks -I../Libraries/UI/Source -I../Libraries/VOX/Source -I../"Mac Src" \
+-Wno-nonportable-include-path -Wno-deprecated-declarations
 
 #OBJS = $(SRCS:.C=.o)
 
