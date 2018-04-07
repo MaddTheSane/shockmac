@@ -1,0 +1,45 @@
+
+
+ARCHFLAGS := -m32
+
+SRCS = Source/AFILE.c \
+Source/AMOV.c \
+Source/ANIMCONV.c \
+Source/AQTM.c \
+Source/COMPOSE.c \
+Source/MOVINFO.c \
+Source/QUIKCONV.c \
+Source/QUIKDUMP.c \
+Source/QUIKTIME.c \
+Source/QUIKWRIT.c \
+
+
+CFLAGS+=-ISource -I../H -I../LG/Source -I../2D/Source -I../FIX/Source \
+-I../DSTRUCT/Source -I../RES/Source -I../../"Mac Src"
+#OBJS = $(SRCS:.C=.o)
+
+# change these to proper directories where each file should be
+SRCDIR   = Source
+OBJDIR   = obj
+BINDIR   = bin
+
+# SRCS  := $(wildcard $(SRCDIR)/*.c)
+INCLUDES := $(wildcard $(SRCDIR)/*.h)
+OBJS  := $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+rm       = rm -f
+
+
+$(OBJS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
+	@$(CC) $(CFLAGS) $(ARCHFLAGS) -c $< -o $@
+	@echo "Compiled "$<" successfully!"
+
+.PHONY: clean
+clean:
+	@$(rm) $(OBJECTS)
+	@echo "Cleanup complete!"
+
+libAFILE.dylib: $(OBJS)
+	$(CC) -dynamiclib $(ARCHFLAGS) -framework CoreServices -o $@ $^ 
+
+libAFILE.a: $(OBJS)
+	$(AR) -rcs $@ $^ 
