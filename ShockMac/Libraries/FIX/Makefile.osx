@@ -1,0 +1,41 @@
+
+
+ARCHFLAGS := -m32
+
+SRCS = Source/ATOFIX.c \
+Source/FIX.c \
+Source/FIX24.c \
+Source/FIXSPRNT.c \
+Source/FIX_SQRT.c \
+Source/F_EXP.c \
+Source/MakeTables.c
+
+CFLAGS+=-ISource -I../H
+
+#OBJS = $(SRCS:.C=.o)
+
+# change these to proper directories where each file should be
+SRCDIR   = Source
+OBJDIR   = obj
+BINDIR   = bin
+
+# SRCS  := $(wildcard $(SRCDIR)/*.c)
+INCLUDES := $(wildcard $(SRCDIR)/*.h)
+OBJS  := $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+rm       = rm -f
+
+
+$(OBJS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
+	@$(CC) $(CFLAGS) $(ARCHFLAGS) -c $< -o $@
+	@echo "Compiled "$<" successfully!"
+
+.PHONY: clean
+clean:
+	@$(rm) $(OBJECTS)
+	@echo "Cleanup complete!"
+
+libFIX.dylib: $(OBJS)
+	$(CC) -dynamiclib $(ARCHFLAGS) -framework CoreServices -o $@ $^ 
+
+libFIX.a: $(OBJS)
+	$(AR) -rcs $@ $^ 
