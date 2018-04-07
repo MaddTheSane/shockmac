@@ -57,7 +57,6 @@ HUD.c \
 HUDOBJ.c \
 INIT.c \
 INVENT.c \
-LEANMETR.c \
 MAINLOOP.c \
 MAP.c \
 MFDFUNC.c \
@@ -116,7 +115,8 @@ WRAPPER.c \
 # INPUT.c \
 
 CXXSRCS= FRMAIN.C \
- FrUtils.C \
+FrUtils.C \
+LEANMETR.c \
 
 
 CFLAGS+=-IHeaders -I../Libraries/H -I../Libraries/LG/Source -I../Libraries/FIX/Source -I../Libraries/DSTRUCT/Source \
