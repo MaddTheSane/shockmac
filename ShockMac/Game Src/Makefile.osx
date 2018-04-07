@@ -1,0 +1,147 @@
+
+
+ARCHFLAGS := -m32
+
+SRCS = AI.c \
+AIRUPT.c \
+AMAP.c \
+AMAPLOOP.c \
+AMMOMFD.c \
+AUDIOLOG.c \
+AUTOMAP.c \
+BARK.c \
+BIOHELP.c \
+CARDMFD.c \
+CITRES.c \
+COMBAT.c \
+CONE.c \
+CRITERR.c \
+CYBER.c \
+CYBERMFD.c \
+CYBMEM.c \
+CYBRND.c \
+DAMAGE.c \
+DIGIFX.c \
+DRUGS.c \
+EFFECT.c \
+EMAIL.c \
+FACEOBJ.c \
+FIXTRMFD.c \
+FRCAMERA.c \
+FRCLIP.c \
+FRCOMPIL.c \
+FRMAIN.c \
+FROBJ.c \
+FROSLEW.c \
+FRPIPE.c \
+FRPTS.c \
+FRSETUP.c \
+FRTABLES.c \
+FRTERR.c \
+FRUTIL.c \
+FULLAMAP.c \
+FULLSCRN.c \
+FrUtils.c \
+GAMELOOP.c \
+GAMEOBJ.c \
+GAMEREND.c \
+GAMESORT.c \
+GAMESTRN.c \
+GAMESYS.c \
+GAMETIME.c \
+GAMEWRAP.c \
+GEARMFD.c \
+GR2SS.c \
+GRENADES.c \
+HAND.c \
+HFLIP.c \
+HKEYFUNC.c \
+HUD.c \
+HUDOBJ.c \
+INIT.c \
+INPUT.c \
+INVENT.c \
+LEANMETR.c \
+MAINLOOP.c \
+MAP.c \
+MFDFUNC.c \
+MFDGADG.c \
+MFDGAMES.c \
+MFDGUMP.c \
+MFDPANEL.c \
+MINIMAX.c \
+MLIMBS.c \
+MOVEKEYS.c \
+MUSICAI.c \
+NEWAI.c \
+NEWMFD.c \
+OBJAPP.c \
+OBJECTS.c \
+OBJLOAD.c \
+OBJPROP.c \
+OBJSIM.c \
+OBJUSE.c \
+OLH.c \
+OLHSCAN.c \
+PALFX.c \
+PATHFIND.c \
+PHYSICS.c \
+PLAYER.c \
+PLOTWARE.c \
+POPUPS.c \
+RENDER.c \
+RENDTOOL.c \
+SAVELOAD.c \
+SCHEDULE.c \
+SCREEN.c \
+SETUP.c \
+SHODAN.c \
+SIDEICON.c \
+SNDCALL.c \
+STAR.c \
+STATICS.c \
+STATUS.c \
+TARGET.c \
+TEXTMAPS.c \
+TFDIRECT.c \
+TFUTIL.c \
+TOOLS.c \
+TRIGGER.c \
+VIEW360.c \
+VIEWHELP.c \
+VITALS.c \
+VMAIL.c \
+WARES.c \
+WEAPONS.c \
+WRAPPER.c \
+
+
+CFLAGS+=-IHeaders -I../Libraries/H -I../Libraries/LG/Source -I../Libraries/FIX/Source -I../Libraries/DSTRUCT/Source \
+-I../Libraries/2D/Source -I../Libraries/3D/Source -I../Libraries/INPUT/Source -I../Libraries/RES/Source -fpascal-strings \
+-I../Libraries/EDMS/Source -I../Libraries/PALETTE/Source -I../Libraries/RND/Source \
+-I../Libraries/SND/Source -F$(HOME)/oldQTFrameworks -I../Libraries/UI/Source -I../Libraries/VOX/Source -I../"Mac Src"
+
+#OBJS = $(SRCS:.C=.o)
+
+# change these to proper directories where each file should be
+SRCDIR   = Source
+OBJDIR   = obj
+BINDIR   = bin
+
+# SRCS  := $(wildcard $(SRCDIR)/*.c)
+INCLUDES := $(wildcard $(SRCDIR)/*.h)
+OBJS  := $(SRCS:%.c=$(OBJDIR)/%.o)
+rm       = rm -f
+
+
+$(OBJS): $(OBJDIR)/%.o : %.c
+	@$(CC) $(CFLAGS) $(ARCHFLAGS) -c $< -o $@ -include ../LIB/LGHeaders.pch
+	@echo "Compiled "$<" successfully!"
+
+.PHONY: clean
+clean:
+	@$(rm) $(OBJECTS)
+	@echo "Cleanup complete!"
+
+libGame.a: $(OBJS)
+	$(AR) -rcs $@ $^ 
