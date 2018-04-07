@@ -1,0 +1,39 @@
+
+
+ARCHFLAGS := -m32
+
+SRCS = Source/VOX2D.c \
+Source/VOX3D.c \
+Source/VOXINIT.c \
+
+
+CFLAGS+=-ISource -I../H -I../LG/Source -I../FIX/Source -I../DSTRUCT/Source \
+-I../2D/Source -I../3D/Source -I../INPUT/Source -I../RES/Source -fpascal-strings
+
+#OBJS = $(SRCS:.C=.o)
+
+# change these to proper directories where each file should be
+SRCDIR   = Source
+OBJDIR   = obj
+BINDIR   = bin
+
+# SRCS  := $(wildcard $(SRCDIR)/*.c)
+INCLUDES := $(wildcard $(SRCDIR)/*.h)
+OBJS  := $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+rm       = rm -f
+
+
+$(OBJS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
+	@$(CC) $(CFLAGS) $(ARCHFLAGS) -c $< -o $@
+	@echo "Compiled "$<" successfully!"
+
+.PHONY: clean
+clean:
+	@$(rm) $(OBJECTS)
+	@echo "Cleanup complete!"
+
+libVOX.dylib: $(OBJS)
+	$(CC) -dynamiclib $(ARCHFLAGS) -framework CoreServices -o $@ $^ 
+
+libVOX.a: $(OBJS)
+	$(AR) -rcs $@ $^ 
