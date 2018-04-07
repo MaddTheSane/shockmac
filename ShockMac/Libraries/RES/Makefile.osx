@@ -1,0 +1,44 @@
+
+
+ARCHFLAGS := -m32
+
+SRCS = Source/LZW.c \
+Source/REFACC.c \
+Source/RES.c \
+Source/RESACC.c \
+Source/RESBUILD.c \
+Source/RESFILE.c \
+Source/RESLOAD.c \
+Source/RESMAKE.c \
+Source/RESTYPES.c
+
+CFLAGS+=-ISource -I../H -I../LG/Source 
+CFLAGS+=-fpascal-strings
+
+#OBJS = $(SRCS:.c=.o)
+
+# change these to proper directories where each file should be
+SRCDIR   = Source
+OBJDIR   = obj
+BINDIR   = bin
+
+# SRCS  := $(wildcard $(SRCDIR)/*.c)
+INCLUDES := $(wildcard $(SRCDIR)/*.h)
+OBJS  := $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+rm       = rm -f
+
+
+$(OBJS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
+	@$(CC) $(CFLAGS) $(ARCHFLAGS) -c $< -o $@
+	@echo "Compiled "$<" successfully!"
+
+.PHONY: clean
+clean:
+	@$(rm) $(OBJECTS)
+	@echo "Cleanup complete!"
+
+libRES.dylib: $(OBJS)
+	$(CC) -dynamiclib $(ARCHFLAGS) -framework CoreServices -o $@ $^ 
+
+libRES.a: $(OBJS)
+	$(AR) -rcs $@ $^ 
