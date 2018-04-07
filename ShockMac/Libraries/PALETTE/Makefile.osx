@@ -1,0 +1,35 @@
+
+
+ARCHFLAGS := -m32
+
+SRCS = Source/PALETTE.c 
+
+CFLAGS+=-ISource -I../H -I../LG/Source -I../FIX/Source -I../2D/Source
+
+#OBJS = $(SRCS:.C=.o)
+
+# change these to proper directories where each file should be
+SRCDIR   = Source
+OBJDIR   = obj
+BINDIR   = bin
+
+# SRCS  := $(wildcard $(SRCDIR)/*.c)
+INCLUDES := $(wildcard $(SRCDIR)/*.h)
+OBJS  := $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+rm       = rm -f
+
+
+$(OBJS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
+	@$(CC) $(CFLAGS) $(ARCHFLAGS) -c $< -o $@
+	@echo "Compiled "$<" successfully!"
+
+.PHONY: clean
+clean:
+	@$(rm) $(OBJECTS)
+	@echo "Cleanup complete!"
+
+libPALETTE.dylib: $(OBJS)
+	$(CC) -dynamiclib $(ARCHFLAGS) -framework CoreServices -o $@ $^ 
+
+libPALETTE.a: $(OBJS)
+	$(AR) -rcs $@ $^ 
