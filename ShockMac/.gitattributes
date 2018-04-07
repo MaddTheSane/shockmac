@@ -1,4 +1,6 @@
 * text=auto eol=cr
+Makefile.osx eol=lf
+
+*.sit binary
 .finf/* binary
 .rsrc/* binary
-Makefile.osx eol=lf
