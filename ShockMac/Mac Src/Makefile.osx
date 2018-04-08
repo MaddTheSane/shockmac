@@ -1,0 +1,49 @@
+
+
+ARCHFLAGS := -m32
+
+SRCS = AEHandlers.c \
+Credits.c \
+DialogHelpers.c \
+InitMac.c \
+MacTune.c \
+MoviePlay.c \
+Prefs.c \
+Shock.c \
+ShockBitmap.c \
+ShockDialogs.c \
+ShockHelp.c \
+Tests.c \
+
+
+
+CFLAGS+=-I../Libraries/H -I../Libraries/LG/Source -I../Libraries/FIX/Source -I../Libraries/DSTRUCT/Source \
+-I../Libraries/2D/Source -I../Libraries/3D/Source -I../Libraries/INPUT/Source -I../Libraries/RES/Source -fpascal-strings \
+-I../Libraries/EDMS/Source -I../Libraries/PALETTE/Source -I../Libraries/RND/Source \
+-I../Libraries/SND/Source -F$(HOME)/oldQTFrameworks -I../Libraries/UI/Source -I../Libraries/VOX/Source -I. \
+-Wno-nonportable-include-path -Wno-deprecated-declarations
+
+#OBJS = $(SRCS:.C=.o)
+
+# change these to proper directories where each file should be
+SRCDIR   = Source
+OBJDIR   = obj
+BINDIR   = bin
+
+# SRCS  := $(wildcard $(SRCDIR)/*.c)
+INCLUDES := $(wildcard $(SRCDIR)/*.h)
+OBJS  := $(SRCS:%.c=$(OBJDIR)/%.o)
+rm       = rm -f
+
+
+$(OBJS): $(OBJDIR)/%.o : %.c
+	@$(CC) $(CFLAGS) $(ARCHFLAGS) -c $< -o $@ -include ../LIB/LGHeaders.pch
+	@echo "Compiled "$<" successfully!"
+
+.PHONY: clean
+clean:
+	@$(rm) $(OBJECTS)
+	@echo "Cleanup complete!"
+
+System\ Shock: $(OBJS)
+	$(CXX) -o $@ $^ 

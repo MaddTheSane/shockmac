@@ -23,6 +23,8 @@
 
 #pragma pack (push, 2)
 
+#define geneva 3
+
 typedef CALLBACK_API( void , DragGrayRgnProcPtr )(void);
 typedef STACK_UPP_TYPE(DragGrayRgnProcPtr)                      DragGrayRgnUPP;
 
