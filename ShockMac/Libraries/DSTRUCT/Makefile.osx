@@ -13,6 +13,7 @@ Source/RECT.c \
 CFLAGS+=-ISource -I../H -I../LG/Source
 
 #OBJS = $(SRCS:.C=.o)
+all: libDSTRUCT.a
 
 # change these to proper directories where each file should be
 SRCDIR   = Source
@@ -31,7 +32,7 @@ $(OBJS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
 
 .PHONY: clean
 clean:
-	@$(rm) $(OBJECTS)
+	@$(rm) $(OBJS)
 	@echo "Cleanup complete!"
 
 libDSTRUCT.dylib: $(OBJS)

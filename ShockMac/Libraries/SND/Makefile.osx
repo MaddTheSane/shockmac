@@ -13,6 +13,7 @@ Source/SND_UTIL.c \
 CFLAGS+=-ISource -I../H -I../LG/Source -I../FIX/Source -F$(HOME)/oldQTFrameworks
 
 #OBJS = $(SRCS:.C=.o)
+all: libSND.a
 
 # change these to proper directories where each file should be
 SRCDIR   = Source
@@ -31,7 +32,7 @@ $(OBJS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
 
 .PHONY: clean
 clean:
-	@$(rm) $(OBJECTS)
+	@$(rm) $(OBJS)
 	@echo "Cleanup complete!"
 
 libSND.dylib: $(OBJS)
@@ -39,3 +40,4 @@ libSND.dylib: $(OBJS)
 
 libSND.a: $(OBJS)
 	$(AR) -rcs $@ $^ 
+

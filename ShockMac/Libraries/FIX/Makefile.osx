@@ -13,6 +13,7 @@ Source/MakeTables.c
 CFLAGS+=-ISource -I../H
 
 #OBJS = $(SRCS:.C=.o)
+all: libFIX.a
 
 # change these to proper directories where each file should be
 SRCDIR   = Source
@@ -31,7 +32,7 @@ $(OBJS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
 
 .PHONY: clean
 clean:
-	@$(rm) $(OBJECTS)
+	@$(rm) $(OBJS)
 	@echo "Cleanup complete!"
 
 libFIX.dylib: $(OBJS)

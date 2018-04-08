@@ -14,7 +14,6 @@ ShockBitmap.c \
 ShockDialogs.c \
 ShockHelp.c \
 
-
 CFLAGS+=-I../Libraries/H -I../Libraries/LG/Source -I../Libraries/FIX/Source -I../Libraries/DSTRUCT/Source \
 -I../Libraries/2D/Source -I../Libraries/3D/Source -I../Libraries/INPUT/Source -I../Libraries/RES/Source -fpascal-strings \
 -I../Libraries/EDMS/Source -I../Libraries/PALETTE/Source -I../Libraries/RND/Source \
@@ -22,6 +21,7 @@ CFLAGS+=-I../Libraries/H -I../Libraries/LG/Source -I../Libraries/FIX/Source -I..
 -Wno-nonportable-include-path -Wno-deprecated-declarations -I../"Game Src"/Headers
 
 #OBJS = $(SRCS:.C=.o)
+all: System\ Shock
 
 # change these to proper directories where each file should be
 SRCDIR   = Source
@@ -40,7 +40,7 @@ $(OBJS): $(OBJDIR)/%.o : %.c
 
 .PHONY: clean
 clean:
-	@$(rm) $(OBJECTS)
+	@$(rm) $(OBJS)
 	@echo "Cleanup complete!"
 
 System\ Shock: $(OBJS)

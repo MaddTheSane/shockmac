@@ -158,9 +158,11 @@ Source/Flat\ 8/Fl8F.c \
 .all: lib2D.a
 
 CFLAGS+=-ISource -I../H -I../LG/Source -ISource/GR -I../FIX/Source -ISource/Clip \
--ISource/"Flat 8" -ISource/Gen  -ISource/RSD -Wno-nonportable-include-path
+-ISource/"Flat 8" -ISource/Gen  -ISource/RSD -Wno-nonportable-include-path \
+-fpascal-strings
 
 #OBJS = $(SRCS:.c=.o)
+all: lib2D.a
 
 # change these to proper directories where each file should be
 SRCDIR   = Source
@@ -179,7 +181,7 @@ $(OBJS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
 
 .PHONY: clean
 clean:
-	@$(rm) $(OBJECTS)
+	@$(rm) $(OBJS)
 	@echo "Cleanup complete!"
 
 lib2D.dylib: $(OBJS)

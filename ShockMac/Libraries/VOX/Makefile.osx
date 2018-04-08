@@ -17,6 +17,8 @@ SRCDIR   = Source
 OBJDIR   = obj
 BINDIR   = bin
 
+all: libVOX.a
+
 # SRCS  := $(wildcard $(SRCDIR)/*.c)
 INCLUDES := $(wildcard $(SRCDIR)/*.h)
 OBJS  := $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
@@ -29,7 +31,7 @@ $(OBJS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
 
 .PHONY: clean
 clean:
-	@$(rm) $(OBJECTS)
+	@$(rm) $(OBJS)
 	@echo "Cleanup complete!"
 
 libVOX.dylib: $(OBJS)

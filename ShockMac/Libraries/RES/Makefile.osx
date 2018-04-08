@@ -16,6 +16,7 @@ CFLAGS+=-ISource -I../H -I../LG/Source
 CFLAGS+=-fpascal-strings
 
 #OBJS = $(SRCS:.c=.o)
+all: libRES.a
 
 # change these to proper directories where each file should be
 SRCDIR   = Source
@@ -34,7 +35,7 @@ $(OBJS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
 
 .PHONY: clean
 clean:
-	@$(rm) $(OBJECTS)
+	@$(rm) $(OBJS)
 	@echo "Cleanup complete!"
 
 libRES.dylib: $(OBJS)

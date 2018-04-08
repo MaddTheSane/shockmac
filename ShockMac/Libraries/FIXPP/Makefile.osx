@@ -7,6 +7,7 @@ SRCS = Source/FIXPP.CC
 CFLAGS+=-ISource -I../H -I../FIX/Source
 
 #OBJS = $(SRCS:.C=.o)
+all: libFIXPP.a
 
 # change these to proper directories where each file should be
 SRCDIR   = Source
@@ -25,7 +26,7 @@ $(OBJS): $(OBJDIR)/%.o : $(SRCDIR)/%.CC
 
 .PHONY: clean
 clean:
-	@$(rm) $(OBJECTS)
+	@$(rm) $(OBJS)
 	@echo "Cleanup complete!"
 
 libFIXPP.dylib: $(OBJS)

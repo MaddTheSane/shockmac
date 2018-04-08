@@ -32,8 +32,9 @@ Source/PHY_TOOL.CC \
 Source/SOLITON.CC \
 Source/TERRAIN.CC
 
+all: libEDMS.a
 
-CFLAGS+=-ISource -I../H -I../FIXPP/Source -I../FIX/Source -I../LG/Source
+CFLAGS+=-ISource -I../H -I../FIXPP/Source -I../FIX/Source -I../LG/Source -ISource/MODELS
 
 #OBJS = $(SRCS:.C=.o)
 
@@ -54,7 +55,7 @@ $(OBJS): $(OBJDIR)/%.o : $(SRCDIR)/%.CC
 
 .PHONY: clean
 clean:
-	@$(rm) $(OBJECTS)
+	@$(rm) $(OBJS)
 	@echo "Cleanup complete!"
 
 libEDMS.dylib: $(OBJS)
@@ -62,3 +63,4 @@ libEDMS.dylib: $(OBJS)
 
 libEDMS.a: $(OBJS)
 	$(AR) -rcs $@ $^ 
+

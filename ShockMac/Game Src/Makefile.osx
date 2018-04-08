@@ -126,6 +126,7 @@ CFLAGS+=-IHeaders -I../Libraries/H -I../Libraries/LG/Source -I../Libraries/FIX/S
 -Wno-nonportable-include-path -Wno-deprecated-declarations
 
 #OBJS = $(SRCS:.C=.o)
+all: libGame.a
 
 # change these to proper directories where each file should be
 SRCDIR   = Source
@@ -144,7 +145,7 @@ $(OBJS): $(OBJDIR)/%.o : %.c
 
 .PHONY: clean
 clean:
-	@$(rm) $(OBJECTS)
+	@$(rm) $(OBJS)
 	@echo "Cleanup complete!"
 
 libGame.a: $(OBJS)
