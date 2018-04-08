@@ -98,60 +98,59 @@ Source/Gen/GENVPOLY.c \
 Source/Gen/GENVRECT.c \
 Source/Gen/GENWCLIN.c \
 Source/Gen/GENWLIN.c \
-
-SRCS2 = Source/Flat\ 8/FL8BL.c \
-Source/Flat\ 8/FL8BLDBL.c \
-Source/Flat\ 8/FL8CHFL8.c \
-Source/Flat\ 8/FL8CLEAR.c \
-Source/Flat\ 8/FL8CLIN.c \
-Source/Flat\ 8/FL8CNV.c \
-Source/Flat\ 8/FL8COP.c \
-Source/Flat\ 8/FL8CPLY.c \
-Source/Flat\ 8/FL8CTP.c \
-Source/Flat\ 8/FL8DBL.c \
-Source/Flat\ 8/FL8FL8.c \
-Source/Flat\ 8/FL8FL8C.c \
-Source/Flat\ 8/FL8FL8M.c \
-Source/Flat\ 8/FL8FLTR2.c \
-Source/Flat\ 8/FL8FT.c \
-Source/Flat\ 8/FL8G24.c \
-Source/Flat\ 8/FL8GFL8.c \
-Source/Flat\ 8/FL8GPIX.c \
-Source/Flat\ 8/FL8HFL8.c \
-Source/Flat\ 8/FL8HLIN.c \
-Source/Flat\ 8/FL8LF.c \
-Source/Flat\ 8/FL8LIN.c \
-Source/Flat\ 8/FL8LL.c \
-Source/Flat\ 8/FL8LNOP.c \
-Source/Flat\ 8/FL8LOP.c \
-Source/Flat\ 8/FL8LP.c \
-Source/Flat\ 8/FL8LTP.c \
-Source/Flat\ 8/FL8LW.c \
-Source/Flat\ 8/FL8MONO.c \
-Source/Flat\ 8/FL8MSCL.c \
-Source/Flat\ 8/FL8NL.c \
-Source/Flat\ 8/FL8NS.c \
-Source/Flat\ 8/FL8NTRP2.c \
-Source/Flat\ 8/FL8P.c \
-Source/Flat\ 8/FL8P24.c \
-Source/Flat\ 8/FL8PIX.c \
-Source/Flat\ 8/FL8PLY.c \
-Source/Flat\ 8/FL8PNT.c \
-Source/Flat\ 8/FL8RECT.c \
-Source/Flat\ 8/FL8ROW.c \
-Source/Flat\ 8/FL8RSD8.c \
-Source/Flat\ 8/FL8S.c \
-Source/Flat\ 8/FL8SLIN.c \
-Source/Flat\ 8/FL8SPLY.c \
-Source/Flat\ 8/FL8SUB.c \
-Source/Flat\ 8/FL8TL8.c \
-Source/Flat\ 8/FL8TPL.c \
-Source/Flat\ 8/FL8TSMAP.c \
-Source/Flat\ 8/FL8VLIN.c \
-Source/Flat\ 8/FL8W.c \
-Source/Flat\ 8/FL8WCLIN.c \
-Source/Flat\ 8/FL8WLIN.c \
-Source/Flat\ 8/Fl8F.c \
+Source/FLAT8/FL8BL.c \
+Source/FLAT8/FL8BLDBL.c \
+Source/FLAT8/FL8CHFL8.c \
+Source/FLAT8/FL8CLEAR.c \
+Source/FLAT8/FL8CLIN.c \
+Source/FLAT8/FL8CNV.c \
+Source/FLAT8/FL8COP.c \
+Source/FLAT8/FL8CPLY.c \
+Source/FLAT8/FL8CTP.c \
+Source/FLAT8/FL8DBL.c \
+Source/FLAT8/FL8FL8.c \
+Source/FLAT8/FL8FL8C.c \
+Source/FLAT8/FL8FL8M.c \
+Source/FLAT8/FL8FLTR2.c \
+Source/FLAT8/FL8FT.c \
+Source/FLAT8/FL8G24.c \
+Source/FLAT8/FL8GFL8.c \
+Source/FLAT8/FL8GPIX.c \
+Source/FLAT8/FL8HFL8.c \
+Source/FLAT8/FL8HLIN.c \
+Source/FLAT8/FL8LF.c \
+Source/FLAT8/FL8LIN.c \
+Source/FLAT8/FL8LL.c \
+Source/FLAT8/FL8LNOP.c \
+Source/FLAT8/FL8LOP.c \
+Source/FLAT8/FL8LP.c \
+Source/FLAT8/FL8LTP.c \
+Source/FLAT8/FL8LW.c \
+Source/FLAT8/FL8MONO.c \
+Source/FLAT8/FL8MSCL.c \
+Source/FLAT8/FL8NL.c \
+Source/FLAT8/FL8NS.c \
+Source/FLAT8/FL8NTRP2.c \
+Source/FLAT8/FL8P.c \
+Source/FLAT8/FL8P24.c \
+Source/FLAT8/FL8PIX.c \
+Source/FLAT8/FL8PLY.c \
+Source/FLAT8/FL8PNT.c \
+Source/FLAT8/FL8RECT.c \
+Source/FLAT8/FL8ROW.c \
+Source/FLAT8/FL8RSD8.c \
+Source/FLAT8/FL8S.c \
+Source/FLAT8/FL8SLIN.c \
+Source/FLAT8/FL8SPLY.c \
+Source/FLAT8/FL8SUB.c \
+Source/FLAT8/FL8TL8.c \
+Source/FLAT8/FL8TPL.c \
+Source/FLAT8/FL8TSMAP.c \
+Source/FLAT8/FL8VLIN.c \
+Source/FLAT8/FL8W.c \
+Source/FLAT8/FL8WCLIN.c \
+Source/FLAT8/FL8WLIN.c \
+Source/FLAT8/Fl8F.c \
 
 
 

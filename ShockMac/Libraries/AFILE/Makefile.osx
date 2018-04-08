@@ -4,7 +4,6 @@ ARCHFLAGS := -m32
 
 SRCS = Source/AFILE.c \
 Source/AMOV.c \
-Source/ANIMCONV.c \
 Source/AQTM.c \
 Source/COMPOSE.c \
 Source/MOVINFO.c \
